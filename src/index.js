@@ -5,16 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import AppContextProvider from "./contexts/app_context";
-import SqlContextProvider from "./contexts/sql_context";
+import DBContextProvider from "./contexts/db_context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
       <AppContextProvider>
-        <SqlContextProvider>
+        <DBContextProvider>
           <App />
-        </SqlContextProvider>
+        </DBContextProvider>
       </AppContextProvider>
     </Router>
   </React.StrictMode>
