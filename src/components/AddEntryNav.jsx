@@ -1,10 +1,23 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function AddEntryNav() {
   let addEntryElem = useRef();
   let todayElem = useRef();
   let yesterdayElem = useRef();
   let otherDayElem = useRef();
+
+  // TODO: Use state and useEffect to blur background
+  let [isAddEntryNavSelected,setIsAddEntryNavSelected] = useState(false)
+  // document.querySelector("main").style.filter = "blur(10px)"
+
+  useEffect(()=>{
+    if (isAddEntryNavSelected) {
+        document.querySelector("main").style.filter = "blur(10px)"
+    } else {
+        document.querySelector("main").style.filter = "blur(0)"
+    }
+  },[isAddEntryNavSelected])
+
 
   const handleAddEntryPress = (event) => {
     let entryElems = (refElem) => {
@@ -14,14 +27,17 @@ function AddEntryNav() {
         !elem.classList.value.includes("backwards")
       ) {
         elem.classList.add(`${elem.id}-animation-forwards`);
+        setIsAddEntryNavSelected(true)
       } else if (elem.classList.value.includes("forwards")) {
         elem.classList.replace(`${elem.id}-animation-forwards`,`${elem.id}-animation-backwards`);
+        setIsAddEntryNavSelected(false)
       } else if (elem.classList.value.includes("backwards")) {
         elem.classList.replace(`${elem.id}-animation-backwards`,`${elem.id}-animation-forwards`);
+        setIsAddEntryNavSelected(true)
       }
     };
     [addEntryElem,yesterdayElem,todayElem,otherDayElem].forEach(entryElems)
-    console.log(addEntryElem.current.classList.value);
+    
   };
 
   return (

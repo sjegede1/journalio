@@ -8,7 +8,10 @@ function EntryForm() {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         let note = event.target.querySelector('#entry-note').value;
-        setDbData([...dbData,{note}])
+        if (note) {
+          setDbData([{note},...dbData,])
+        }
+
     }
     
   return (
