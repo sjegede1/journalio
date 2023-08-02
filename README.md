@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Journalio App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This is a daily journal app designed to help you track your daily moods and the activities that may have contributed to these moods.
+This app is HEAVILY INSPIRED by The Daylio App
 
-In the project directory, you can run:
+## Outline of Work to be done
+#### CURRENT TODO:
+- Create the entry form
+- Create Entries List in chronological order
+- 
+### MVP
+- ✅ Create a header with the name of the month, left and right arrows, and a search icon.
+- ✅ Create a nav bar at the bottom with 4 pages and a 5th icon in the middle to add a new entry.
+- Nav Pages
+    - Entries: list of all entries in the journal sorted chronologically
+    - Stats: shows stats related to your mood and activities
+    - Friends/Notifications: Notifications from friends
+    - Profile: Profiles settings, gallery etc
+- Other Pages
+    - Entry Form: This is the page where we enter and submit new journal entries.
+        - <strong>FEATURES:</strong>
+            - Animate card by sliding up from the bottom.
+            - Use params to set state when the page loads.
+            - 
+        - DateTime: input type:datetime-local value:current-time max:EOD today required
+        - Mood: radio int values 1-5, The values will be represented by emojis
+        - Note: input type:text
+        - Activity: Checkbox of all activities that happened that day
+        - Add Photo: Add photo from device or take photo
+        - Add voice note: Upload voice note.
+            - Voice note can be sellected as a highlight which can be shared with friends
+    - Search Page: Searches for entries and activities (maybe even friends)
+    - Friend's Profile Page:
+        - Charts: recent mood history.
+        - Highlighted voice notes.
+        - Send voice note.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## RESOURCES
+1. Daylio App
+2. icons website
+3. 

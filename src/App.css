@@ -3,9 +3,19 @@
   /* height: 100vh; */
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
 main {
     padding: 6em 0 6em;
+    z-index: -1;
+    max-width: 900px;
+    margin-inline: auto;
 }
+
+
 
 @import url(./assets/styles/header.css);
 @import url(./assets/styles/entries.css);

@@ -6,18 +6,16 @@ function AddEntryNav() {
   let yesterdayElem = useRef();
   let otherDayElem = useRef();
 
-  // TODO: Use state and useEffect to blur background
+  // TODO: Remove blur when I click on main
   let [isAddEntryNavSelected,setIsAddEntryNavSelected] = useState(false)
-  // document.querySelector("main").style.filter = "blur(10px)"
 
   useEffect(()=>{
     if (isAddEntryNavSelected) {
         document.querySelector("main").style.filter = "blur(10px)"
     } else {
-        document.querySelector("main").style.filter = "blur(0)"
+        document.querySelector("main").style.filter = "blur(0"
     }
   },[isAddEntryNavSelected])
-
 
   const handleAddEntryPress = (event) => {
     let entryElems = (refElem) => {
