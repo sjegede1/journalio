@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    border: solid black;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.25em;
+    position: fixed;
+    width: 100%;
+    background-color: aliceblue;
+}
+
+.header-title {
+    margin-inline: 2em;
+}
+
+.header-icon {
+    height: 2em;
+}

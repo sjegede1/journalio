@@ -1,0 +1,147 @@
+nav {
+  border: solid;
+  height: 3em;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.25em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: aliceblue;
+}
+
+.nav-icon {
+  height: 2em;
+}
+
+.nav-add-entry-container {
+  border: solid red;
+  display: flex;
+  margin-top: -2em;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-entry {
+  /* border: solid blue; */
+  /* border-radius: 50%; */
+  padding: 0.25em;
+  /* background-color: blue; */
+  z-index: 1;
+}
+
+.nav-add-entry {
+  border: solid green;
+  /* border-radius: 50%; */
+  position: fixed;
+}
+
+/* ================ADD ENTRY ANIMATION============== */
+.add-entry-animation-forwards {
+    animation: add-entry-animation-forwards 0.2s linear forwards;
+  }
+  
+  .add-entry-animation-backwards {
+    animation: add-entry-animation-backwards 0.2s linear backwards;
+  }
+  
+  @keyframes add-entry-animation-forwards {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(135deg);
+    }
+  }
+  
+  @keyframes add-entry-animation-backwards {
+    from {
+      transform: rotateZ(135deg);
+    }
+    to {
+      transform: rotateZ(0deg);
+    }
+  }
+
+/* =================YESTERDAY NAV ANIMATION =============== */
+
+.yesterday-animation-forwards {
+    animation: yesterday-animation-forwards 0.2s linear forwards;
+  }
+  
+  .yesterday-animation-backwards {
+    animation: yesterday-animation-backwards 0.2s linear backwards;
+  }
+  
+  @keyframes yesterday-animation-forwards {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(-90px, -60px);
+    }
+  }
+  
+  @keyframes yesterday-animation-backwards {
+    from {
+      transform: translate(-90px, -60px);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+
+/* ===================TODAY NAV ANIMATION============ */
+.today-animation-forwards {
+  animation: today-animation-forwards 0.2s linear forwards;
+}
+
+.today-animation-backwards {
+  animation: today-animation-backwards 0.2s linear backwards;
+}
+
+@keyframes today-animation-forwards {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, -120px);
+  }
+}
+
+@keyframes today-animation-backwards {
+  from {
+    transform: translate(0, -120px);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+/* =============OTHER DAY NAV ================ */
+.other-day-animation-forwards {
+    animation: other-day-animation-forwards 0.2s linear forwards;
+  }
+  
+  .other-day-animation-backwards {
+    animation: other-day-animation-backwards 0.2s linear backwards;
+  }
+  
+  @keyframes other-day-animation-forwards {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(90px, -60px);
+    }
+  }
+  
+  @keyframes other-day-animation-backwards {
+    from {
+      transform: translate(90px, -60px);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
