@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function AddEntryNav() {
   let addEntryElem = useRef();
@@ -48,13 +49,15 @@ function AddEntryNav() {
         className="nav-icon nav-add-entry"
         onClick={handleAddEntryPress}
       />
+      <Link to="/entryForm" className="nav-icon nav-add-entry">
       <img
         ref={todayElem}
         src="https://www.iconexperience.com/_img/g_collection_png/gradient/32x32/calendar_clock.png"
         alt=""
         id="today"
-        className="nav-icon nav-add-entry"
+        // className="nav-icon nav-add-entry"
       />
+      </Link>
       <img
         ref={yesterdayElem}
         src="https://www.iconexperience.com/_img/g_collection_png/gradient/128x128/arrow_left.png"

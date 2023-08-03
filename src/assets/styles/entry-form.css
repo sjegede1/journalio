@@ -1,0 +1,22 @@
+.entry-form-page {
+    border: solid grey;
+    border-radius: 4em 4em 0 0;
+    padding: 1em;
+}
+
+.entry-form-header {
+    display: flex;
+}
+
+.entry-form {
+    border: solid blue;
+    margin: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.entry-form input {
+    margin: 2em;
+}
+
