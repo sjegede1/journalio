@@ -1,11 +1,14 @@
 import React from "react";
-import DonutChart from "./DonutChart";
+import MoodDonutChart from "./MoodDonutChart";
+import ActivitiesBarChart from "./ActivitiesBarChart";
+import CalendarChart from "./CalendarChart";
 
 function StatsList() {
   return (
     <main className="stats-list">
-        <h1>Stats</h1>
-        <DonutChart />
+        <MoodDonutChart />
+        <ActivitiesBarChart />
+        <CalendarChart />
     </main>
   );
 }

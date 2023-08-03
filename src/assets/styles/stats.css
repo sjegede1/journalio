@@ -1,0 +1,13 @@
+.chart {
+    border: solid green;
+    margin-block: 1em;
+    /* width: fit-content; */
+    /* height: fit-content; */
+}
+
+main.stats-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

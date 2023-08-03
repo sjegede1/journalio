@@ -11,6 +11,7 @@
 main {
     padding: 6em 0 6em;
     z-index: -1;
+    width: 100%;
     max-width: 900px;
     /* margin-inline: auto; */
     align-self: center
@@ -23,3 +24,4 @@ main {
 @import url(./assets/styles/stats.css);
 @import url(./assets/styles/nav.css);
 @import url(./assets/styles/entry-form.css);
+@import url(./assets/styles/stats.css);
