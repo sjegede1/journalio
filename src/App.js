@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Entries />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/calendar" element={<Calendar />} />
-        <Route path="/entryForm" element={<EntryForm />} />
+        <Route path="/entryForm/:datetime" element={<EntryForm />} />
         <Route path="/test" element={<Test />} />
       </Routes>
     </div>

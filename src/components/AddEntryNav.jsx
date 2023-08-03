@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../contexts/app_context";
 
 function AddEntryNav() {
   let addEntryElem = useRef();
@@ -7,8 +8,8 @@ function AddEntryNav() {
   let yesterdayElem = useRef();
   let otherDayElem = useRef();
 
-  // TODO: Remove blur when I click on main
   let [isAddEntryNavSelected,setIsAddEntryNavSelected] = useState(false)
+  let {formatDateTime} = useContext(AppContext);
 
   useEffect(()=>{
     if (isAddEntryNavSelected) {
@@ -49,7 +50,7 @@ function AddEntryNav() {
         className="nav-icon nav-add-entry"
         onClick={handleAddEntryPress}
       />
-      <Link to="/entryForm" className="nav-icon nav-add-entry">
+      <Link to={`/entryForm/${formatDateTime(new Date())}`} className="nav-icon nav-add-entry">
       <img
         ref={todayElem}
         src="https://www.iconexperience.com/_img/g_collection_png/gradient/32x32/calendar_clock.png"
