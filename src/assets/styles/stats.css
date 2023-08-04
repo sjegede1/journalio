@@ -1,6 +1,7 @@
 .chart {
   border: solid green;
-  margin-block: 2em;}
+  margin-block: 2em;
+}
 
 main.stats-list {
   display: flex;
@@ -14,5 +15,4 @@ main.stats-list {
   display: flex;
   align-items: center;
   position: relative;
-
 }

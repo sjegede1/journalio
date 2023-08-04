@@ -18,9 +18,9 @@ function Nav() {
             <img src="https://www.iconexperience.com/_img/g_collection_png/blue/128x128/calendar_3.png" alt="" className="nav-icon" id="nav-calendar" />
         </Link>
 
-        {/* <Link to="/more"> */}
+        <Link to="/test">
             <img src="https://www.iconexperience.com/_img/g_collection_png/blue/128x128/more.png" alt="" className="nav-icon" id="nav-more" />
-        {/* </Link> */}
+        </Link>
     </nav>
   )
 }

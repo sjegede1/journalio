@@ -1,5 +1,6 @@
 import React from 'react'
 import TestChart from "../components/TestChart"
+import Nav from '../components/Nav'
 
 function Test() {
   return (

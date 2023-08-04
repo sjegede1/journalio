@@ -1,56 +1,84 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Chart } from "chart.js";
+import "chart.js/auto";
 import { DBContext } from "../contexts/db_context";
-import Chart from "react-google-charts";
 
 function MoodDonutChart() {
-  const { dbData } = useContext(DBContext);
-  const [donutData, setDonutData] = useState([]);
+  const testChart = useRef();
+  const [chart, setChart] = useState(null);
+  let {dbData} = useContext(DBContext);
 
-  const options = {
-    pieHole: 0.25,
-    is3D: false,
-    backgroundColor: "none",
-    chartArea: { height: "100%", width: "100%" },
-    height: 300,
-    width: 300,
-    legend: "none",
-    pieSliceText: "label",
-    pieSliceTextStyle: { fontSize: 30 },
-    titleTextStyle: { fontSize: 15 },
-    enableInteractivity: true,
-  };
-  const chartType = "PieChart";
-  const columns = ["Mood", "Count"];
+  let labels = ["😀", "🙂", "😐", "😟", "😩"];
 
   const getDonutData = () => {
     let moodCount = [0, 0, 0, 0, 0];
-    let moodEmojis = ["😀", "🙂", "😐", "😟", "😩"];
-    let moodData;
     dbData.forEach((entry) => {
       moodCount[entry.mood]++;
     });
+    return moodCount
+  };
 
-    moodData = moodEmojis.map((e, i) => {
-      return [e, moodCount[i]];
-    });
+  let datasets = [
+    {
+      label: "My First Dataset",
+      data: getDonutData(),
+      backgroundColor: [
+        "blue",
+        "red",
+        "yellow",
+        'green',
+        'purple',
+      ],
+      hoverOffset: 4,
+    },
+  ];
 
-    moodData.unshift(columns);
-    setDonutData(moodData);
+  const configInit = {
+    type: "doughnut",
+    data: {
+        labels,
+        datasets,
+      },
+  };
+  const [config, setConfig] = useState(configInit);
+
+
+
+  const updateChart = () => {
+    if (chart) {
+      chart.data = config.data;
+      chart.update();
+    }
   };
 
   useEffect(() => {
-    getDonutData();
-  }, [dbData]);
+    let newData = getDonutData();
+    let newConfig = config;
+    newConfig.data.datasets[0].data = newData;
+    setConfig(newConfig)
+  },[dbData])
+
+  useEffect(() => {
+    if (chart) {
+      chart.destroy();
+    }
+    setChart(new Chart(testChart.current, config));
+
+    // Clean up: Destroy the chart when the component unmounts
+    return () => {
+      if (chart) {
+        chart.destroy();
+      }
+    };
+  }, [config]);
+
+  useEffect(() => {
+    updateChart();
+  }, [chart]);
 
   return (
     <div className="chart">
-        <h3>Mood Count</h3>
-      <Chart
-        id="donut-chart"
-        chartType={chartType}
-        data={donutData}
-        options={options}
-      />
+      <canvas id="test-chart" ref={testChart}></canvas>
     </div>
   );
 }
