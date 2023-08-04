@@ -18,7 +18,6 @@ function MoodDonutChart() {
     pieSliceTextStyle: { fontSize: 30 },
     titleTextStyle: { fontSize: 15 },
     enableInteractivity: true,
-
   };
   const chartType = "PieChart";
   const columns = ["Mood", "Count"];

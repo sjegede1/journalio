@@ -34,6 +34,16 @@ function CalendarChart() {
   const [calendarData, setCalendarData] = useState([]);
 
   const options = {
+    width: 400,
+    calendar: {
+        yearLabel: {
+            fontSize: 5,
+        }
+    },
+    colorAxis: {
+        colors: ['blue','red','yellow','green','purple'],
+        values:[0,1,2,3,4]
+    }
   };
   const chartType = "Calendar";
   const columns = ["Date", "Average Mood"];
@@ -42,15 +52,16 @@ function CalendarChart() {
     let sum = 0;
     let datesFiltered = dateData.filter(e => e===date)
     datesFiltered.forEach((e,i,a) => {
-        sum += e.mood;
+        sum += dbData[index].mood;
     })
+    console.log(sum,datesFiltered.length)
     return sum/datesFiltered.length
   }
 
   const createDateDataTable = (date, index, dateData) => {
     let dateDataSlice = dateData.slice(index+1);
     if (dateDataSlice && !dateDataSlice.includes(date)) {
-      return [new Date(date), dbData[index].mood];
+      return [new Date(date), averageMoodPerDay(date,index, dateData)];
     }
   };
 
@@ -69,10 +80,9 @@ function CalendarChart() {
   },[dbData])
 
   return (
-    <div className="chart">
-        <h3>Calendar Chart</h3>
+    <div className="chart calendar-chart">
       <Chart
-        className="calendar-chart"
+        className="calendar-comp"
         chartType={chartType}
         data={calendarData}
         options={options}

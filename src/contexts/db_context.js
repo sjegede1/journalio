@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import entries from "../models/entries";
+import friendsEntries from "../models/friendsEntries";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -8,6 +9,7 @@ export const DBContext = createContext();
 
 const DBContextProvider = (props) => {
   const [dbData, setDbData] = useState(entries);
+  const [friendsData, setFriendsData] = useState(friendsEntries);
 
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,7 +31,9 @@ const DBContextProvider = (props) => {
   const analytics = getAnalytics(app);
 
   return (
-    <DBContext.Provider value={{ dbData, setDbData }}>
+    <DBContext.Provider
+      value={{ dbData, setDbData, friendsData, setFriendsData }}
+    >
       {props.children}
     </DBContext.Provider>
   );

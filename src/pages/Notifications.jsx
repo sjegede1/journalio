@@ -1,16 +1,16 @@
 import React from 'react'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
-import CalendarList from '../components/CalendarList'
+import NotificationsList from '../components/NotificationsList'
 
-function Calendar() {
+function Notifications() {
   return (
     <div className="calendar page">
         <Header />
-        <CalendarList />
+        <NotificationsList />
         <Nav />
     </div>
   )
 }
 
-export default Calendar
+export default Notifications

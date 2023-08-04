@@ -1,13 +1,18 @@
 .chart {
-    border: solid green;
-    margin-block: 1em;
-    /* width: fit-content; */
-    /* height: fit-content; */
-}
+  border: solid green;
+  margin-block: 2em;}
 
 main.stats-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightcyan;
 }
 
+.calendar-chart {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+}

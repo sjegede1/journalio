@@ -62,7 +62,7 @@ function EntryForm() {
           name="datetime-input"
           max={getMaxDate()}
           id="datetime-input"
-          value={datetimeParam ? datetimeParam : ""}
+          defaultValue={datetimeParam ? datetimeParam : ""}
           required
         />
         <div className="moods-container">
