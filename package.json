@@ -9,7 +9,7 @@
     "axios": "^1.4.0",
     "chart.js": "^4.3.3",
     "firebase": "^10.1.0",
-    "mongodb": "^5.7.0",
+    "fs": "^0.0.1-security",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-charts": "^4.0.1",

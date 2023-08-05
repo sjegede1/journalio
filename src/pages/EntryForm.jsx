@@ -1,13 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
 import { DBContext } from "../contexts/db_context";
 import { Link, useParams } from "react-router-dom";
-import AudioRecorder from "../components/AudioRecorder";
 import { AppContext } from "../contexts/app_context";
+import { v4 as uuid } from "uuid";
 
 function EntryForm() {
   const [query, setQuery] = useState("");
   let formRef = useRef(null);
-  const { dbData, setDbData } = useContext(DBContext);
+  const { dbData, setDbData, writeJournalEntry } = useContext(DBContext);
   const [date, setDate] = useState(new Date());
   const { datetime: datetimeParam } = useParams();
   const { formatDateTime } = useContext(AppContext);
@@ -23,7 +23,8 @@ function EntryForm() {
     });
     let note = formElem.elements["entry-note"].value;
     let datetime = formElem.elements["datetime-input"].value;
-    let entryid = Math.floor(100 * Math.random());
+    let entryid = uuid();
+
     return { note, mood, activities, datetime, entryid };
   };
 
@@ -32,6 +33,8 @@ function EntryForm() {
     // let noteDiv = event.target.querySelector("#entry-note");
     // let note = noteDiv.value;
     setDbData([getFormElements(event.target), ...dbData]);
+    writeJournalEntry(getFormElements(event.target))
+
     // Reset form
     event.target.reset();
   };
@@ -177,10 +180,6 @@ function EntryForm() {
             setQuery(e.target.value);
           }}
         />
-
-        <div className="voice-note">
-          <AudioRecorder />
-        </div>
       </form>
     </div>
   );

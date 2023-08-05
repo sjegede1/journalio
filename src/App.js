@@ -5,8 +5,19 @@ import Stats from "./pages/Stats";
 import EntryForm from "./pages/EntryForm";
 import Test from "./pages/Test";
 import Notifications from "./pages/Notifications";
+import { useContext, useEffect } from "react";
+import { DBContext } from "./contexts/db_context";
 
 function App() {
+  const {readEntriesFromDB, readUsersFromDB, readMoodsFromDB, readActivitiesFromDB} = useContext(DBContext)
+
+  useEffect(() => {
+    readUsersFromDB();
+    readEntriesFromDB();
+    readMoodsFromDB();
+    readActivitiesFromDB();
+  },[])
+
   return (
     <div className="App">
       <Routes>

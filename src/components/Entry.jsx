@@ -1,10 +1,9 @@
 import React from "react";
 
-function Entry({ data }) {
-  let moodEmojis = ['😀','🙂','😐','😟','😩'];
+function Entry({ data, moods }) {
   return (
     <div className="entry-card">
-      <p>Mood: {moodEmojis[data.mood]}</p>
+      <h1>Mood: {moods[data.mood]}</h1>
       <p>{data.note}</p>
       <h6 className="timestamp">{data.datetime}</h6>
       <ul className="activities-list">

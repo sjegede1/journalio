@@ -1,6 +1,4 @@
 import { createContext, useState } from "react";
-import entries from "../models/entries";
-import friendsEntries from "../models/friendsEntries";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, push, ref, set } from "firebase/database";
@@ -9,9 +7,11 @@ import { v4 as uuid } from "uuid";
 export const DBContext = createContext();
 
 const DBContextProvider = (props) => {
-  const [dbData, setDbData] = useState(entries);
-  const [friendsData, setFriendsData] = useState(friendsEntries);
-  const [testData, setTestData] = useState([]);
+  const [dbData, setDbData] = useState([]);
+  const [users, setUsers] = useState({});
+  const [username, setUsername] = useState("sola-j");
+  const [moods, setMoods] = useState([]);
+  const [activities,setActivities] = useState({})
 
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -36,8 +36,7 @@ const DBContextProvider = (props) => {
   const database = getDatabase(app);
 
   // Write Journal Entry
-  const writeJournalEntry = (datetime, entryid, mood, note, username) => {
-    let UUID = uuid();
+  const writeJournalEntry = ({ datetime, entryid, mood, note, activities }) => {
     let entriesRef = ref(database, "entries");
     let newEntryRef = push(entriesRef);
     set(newEntryRef, {
@@ -46,14 +45,41 @@ const DBContextProvider = (props) => {
       mood,
       note,
       username,
+      activities,
     });
+    readEntriesFromDB();
   };
 
   const readEntriesFromDB = () => {
     const dbRef = ref(database, "/entries");
     onValue(dbRef, (s) => {
-      setTestData(s.val());
-      console.log(testData);
+      let entriesObj = s.val();
+      setDbData(Object.values(entriesObj));
+      console.log(dbData);
+    });
+  };
+
+  const readUsersFromDB = () => {
+    const dbRef = ref(database, "/users");
+    onValue(dbRef, (s) => {
+      setUsers(s.val());
+      console.log(users);
+    });
+  };
+
+  const readMoodsFromDB = () => {
+    const dbRef = ref(database, "/moods");
+    onValue(dbRef, (s) => {
+      setMoods(s.val());
+      console.log(s.val());
+    });
+  };
+
+  const readActivitiesFromDB = () => {
+    const dbRef = ref(database, "/activities");
+    onValue(dbRef, (s) => {
+      setActivities(s.val());
+      console.log(s.val());
     });
   };
 
@@ -62,10 +88,15 @@ const DBContextProvider = (props) => {
       value={{
         dbData,
         setDbData,
-        friendsData,
-        setFriendsData,
         writeJournalEntry,
         readEntriesFromDB,
+        readUsersFromDB,
+        username,
+        setUsername,
+        moods,
+        setMoods,
+        readMoodsFromDB,
+        activities,setActivities,
       }}
     >
       {props.children}
