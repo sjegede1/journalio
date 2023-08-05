@@ -1,14 +1,9 @@
 .chart {
   border: solid green;
   margin-block: 2em;
+  width: fit-content
 }
 
-main.stats-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: lightcyan;
-}
 
 .calendar-chart {
   width: fit-content;
@@ -16,3 +11,5 @@ main.stats-list {
   align-items: center;
   position: relative;
 }
+
+ 

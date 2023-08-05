@@ -34,7 +34,7 @@ function CalendarChart() {
   const [calendarData, setCalendarData] = useState([]);
 
   const options = {
-    width: 400,
+    width: '100%',
     calendar: {
         yearLabel: {
             fontSize: 5,
@@ -80,7 +80,7 @@ function CalendarChart() {
   },[dbData])
 
   return (
-    <div className="chart calendar-chart">
+    <div className="calendar-container">
       <Chart
         className="calendar-comp"
         chartType={chartType}
