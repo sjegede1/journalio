@@ -3,7 +3,7 @@ import { DBContext } from "../contexts/db_context";
 import Chart from "react-google-charts";
 
 function MoodDonutChart() {
-  const { dbData } = useContext(DBContext);
+  const { dbData, moods } = useContext(DBContext);
   const [donutData, setDonutData] = useState([]);
   const options = {
     pieHole: 0.25,
@@ -22,7 +22,7 @@ function MoodDonutChart() {
   const columns = ["Mood", "Count"];
   const getDonutData = () => {
     let moodCount = [0, 0, 0, 0, 0];
-    let moodEmojis = ["😀", "🙂", "😐", "😟", "😩"];
+    let moodEmojis = moods;
     let moodData;
     dbData.forEach((entry) => {
       moodCount[entry.mood]++;

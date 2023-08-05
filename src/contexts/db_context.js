@@ -96,7 +96,7 @@ const DBContextProvider = (props) => {
         moods,
         setMoods,
         readMoodsFromDB,
-        activities,setActivities,
+        activities,setActivities,readActivitiesFromDB,
       }}
     >
       {props.children}

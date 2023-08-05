@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import TestChart from "../components/TestChart";
 import { DBContext } from "../contexts/db_context";
 import { v4 as uuid } from "uuid";
+import AudioRecorder from "../components/AudioRecorder";
 
 function Test() {
   const { readEntriesFromDB, writeJournalEntry } = useContext(DBContext);
@@ -14,6 +15,7 @@ function Test() {
       <br />
 
       <TestChart />
+      <AudioRecorder />
     </div>
   );
 }

@@ -4,10 +4,9 @@ import ActivitiesBarChart from "./ActivitiesBarChart";
 
 function StatsList() {
   return (
-    <main className="stats-list">
-
-
-    </main>
+    <div className="stats-list">
+      <MoodDonutChart />
+    </div>
   );
 }
 

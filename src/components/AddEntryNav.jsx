@@ -11,11 +11,13 @@ function AddEntryNav() {
   let [isAddEntryNavSelected, setIsAddEntryNavSelected] = useState(false);
   let { formatDateTime } = useContext(AppContext);
 
+
+  //TODO: BLUR what used to be maiin
   useEffect(() => {
     if (isAddEntryNavSelected) {
-      document.querySelector("main").style.filter = "blur(10px)";
+      // document.querySelector("main").style.filter = "blur(10px)";
     } else {
-      document.querySelector("main").style.filter = "blur(0";
+      // document.querySelector("main").style.filter = "blur(0";
     }
   }, [isAddEntryNavSelected]);
 

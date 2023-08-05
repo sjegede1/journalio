@@ -1,5 +1,86 @@
 .entry-card {
     border: solid blue;
     margin: 0.5em;
-    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.datetime-stamp {
+    border: solid green;
+    margin: 0;
+    text-align: right;
+    font-size: small;
+    padding-inline: 1em;
+    background-color: lightslategray;
+    z-index: -1;
+    color: lightblue;
+    font-weight: bold;
+}
+
+.entry-info {
+    display: flex;
+    border: solid red;
+    justify-content: space-around;
+}
+
+.emoji-card {
+    border: solid yellow;
+    padding: 0;
+    display: flex;
+    flex-flow:column wrap;
+    max-width: 50%;
+}
+
+.mood-card{
+    font-size: 6em;
+    border: solid black;
+    margin:0
+}
+
+.activities-card {
+    font-size: 3em;
+    margin: 0;
+    border: solid purple;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.activity-emoji {
+    margin: 0;
+}
+
+.note-media-card {
+    border: solid yellow;
+    max-width: 50%;
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: space-around;
+}
+
+.note-card {
+    border: solid blue;
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+}
+
+.entry-media-card {
+    border: solid red;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40%;
+    justify-content:space-around ;
+}
+
+.audio-player {
+    border :solid fuchsia;
+    max-width: 100%;
+    padding-inline: 0.25em;
+    display: flex;
+    align-items: center;
+    z-index: 0;
 }

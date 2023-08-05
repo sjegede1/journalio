@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  /* height: 100vh; */
 }
 
 .page {
@@ -8,13 +7,16 @@
   flex-direction: column;
 }
 
-main {
+.entry-list, .notifications-list, .stats-list {
     padding: 6em 0 6em;
-    z-index: -1;
     width: 100%;
     max-width: 900px;
-    /* margin-inline: auto; */
     align-self: center
+}
+
+.entry-list {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 

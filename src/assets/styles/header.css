@@ -7,10 +7,11 @@ header {
     position: fixed;
     width: 100%;
     background-color: aliceblue;
+    z-index: 1;
 }
 
 .header-title {
-    margin-inline: 2em;
+    margin: 0.5em 2em;
 }
 
 .header-icon {

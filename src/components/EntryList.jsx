@@ -9,11 +9,11 @@ function EntryList() {
   let { dbData, readEntriesFromDB, moods, activities } = useContext(DBContext);
 
   return (
-    <main className="entry-list">
+    <div className="entry-list">
       {dbData.map((entry) => {
-        return <Entry data={entry} moods={moods} key={entry.entryid} />;
+        return <Entry data={entry} moods={moods} activities={activities} key={entry.entryid} />;
       })}
-    </main>
+    </div>
   );
 }
 
