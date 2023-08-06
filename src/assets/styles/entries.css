@@ -12,9 +12,9 @@
     text-align: right;
     font-size: small;
     padding-inline: 1em;
-    background-color: lightslategray;
+    background-color: darkslategrey;
     z-index: -1;
-    color: lightblue;
+    color: white;
     font-weight: bold;
 }
 
@@ -22,6 +22,7 @@
     display: flex;
     border: solid red;
     justify-content: space-around;
+    background-color: lightblue;
 }
 
 .emoji-card {
@@ -39,7 +40,7 @@
 }
 
 .activities-card {
-    font-size: 3em;
+    font-size: 2em;
     margin: 0;
     border: solid purple;
     display: flex;
@@ -55,7 +56,7 @@
     border: solid yellow;
     max-width: 50%;
     display: flex;
-    flex-flow: wrap column;
+    flex-flow: column;
     justify-content: space-around;
 }
 
@@ -72,7 +73,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 40%;
+    max-height: 40%;
     justify-content:space-around ;
 }
 

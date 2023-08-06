@@ -6,12 +6,12 @@ import EntryForm from "../pages/EntryForm";
 import { Link } from "react-router-dom";
 
 function EntryList() {
-  let { dbData, readEntriesFromDB, moods, activities } = useContext(DBContext);
+  let { dbData, readEntriesFromDB, username } = useContext(DBContext);
 
   return (
-    <div className="entry-list">
-      {dbData.map((entry) => {
-        return <Entry data={entry} moods={moods} activities={activities} key={entry.entryid} />;
+    <div className="entry-list main">
+      {dbData.filter(e => e.username === username).map((entry) => {
+        return <Entry data={entry} key={entry.entryid} />;
       })}
     </div>
   );

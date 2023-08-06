@@ -1,10 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
+import { DBContext } from '../contexts/db_context';
+import { v4 as uuid } from 'uuid';
 
 const AudioRecorder = () => {
   const [isRecording, setIsRecording] = useState(false);
-  const [audioBlob, setAudioBlob] = useState(null);
+  // const [audioBlob, setAudioBlob] = useState(null);
+  const [newRecording,setNewRecording] = useState(false)
   const audioRef = useRef(null);
   const mediaRecorderRef = useRef(null);
+  const {handleUpload, audioBlob, setAudioBlob, setAudioURL, audioURL} = useContext(DBContext)
+
+  // JERRY_RIGGED TO set Audio URL
+  useEffect(() => setAudioURL(audioURL), [isRecording])
 
   const startRecording = () => {
     navigator.mediaDevices.getUserMedia({ audio: true })
@@ -35,28 +42,22 @@ const AudioRecorder = () => {
       audioRef.current.src = audioURL;
       audioRef.current.play();
     }
+    setNewRecording(true)
   };
 
-  const handleUpload = () => {
-    // Here you can implement the Firebase upload logic
-    // Create a Firebase storage reference and use put() to upload the Blob
-    // Example code:
-    // const storageRef = firebase.storage().ref();
-    // const audioFileRef = storageRef.child('audio-files/audio.wav');
-    // audioFileRef.put(audioBlob).then((snapshot) => {
-    //   console.log('Audio uploaded successfully!');
-    // }).catch((error) => {
-    //   console.error('Error uploading audio:', error);
-    // });
-  };
+  const handleNewRecording = () => {
+    audioRef.current.src = ""
+    setNewRecording(false)
+  }
+
 
   return (
-    <div>
-      <button onClick={isRecording ? stopRecording : startRecording}>
+    <div className='audio-recorder'>
+      <button type='button' onClick={isRecording ? stopRecording : startRecording}>
         {isRecording ? 'Stop Recording' : 'Start Recording'}
       </button>
-      <button onClick={handlePlayback} disabled={!audioBlob}>Play Recording</button>
-      <button onClick={handleUpload} disabled={!audioBlob}>Upload to Firebase</button>
+      <button type='button' onClick={newRecording? handleNewRecording :handlePlayback} disabled={!audioBlob}>{newRecording ? "New Recording" :"Play Recording"}</button>
+      <button type='button' onClick={() => {handleUpload(audioBlob)}} disabled={!audioBlob}>Upload to Firebase</button>
       <audio ref={audioRef} controls />
     </div>
   );

@@ -3,15 +3,16 @@ import { DBContext } from "../contexts/db_context";
 import { Link, useParams } from "react-router-dom";
 import { AppContext } from "../contexts/app_context";
 import { v4 as uuid } from "uuid";
+import AudioRecorder from "../components/AudioRecorder";
 
 function EntryForm() {
   const [query, setQuery] = useState("");
   let formRef = useRef(null);
-  const { dbData, setDbData, writeJournalEntry } = useContext(DBContext);
+  const { dbData, setDbData, writeJournalEntry, audioURL, setAudioURL, handleUpload, audioBlob } =
+    useContext(DBContext);
   const [date, setDate] = useState(new Date());
   const { datetime: datetimeParam } = useParams();
   const { formatDateTime } = useContext(AppContext);
-  console.log(datetimeParam);
 
   const getFormElements = (formElem) => {
     let mood = formElem.elements.mood.value;
@@ -28,15 +29,18 @@ function EntryForm() {
     return { note, mood, activities, datetime, entryid };
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     // let noteDiv = event.target.querySelector("#entry-note");
     // let note = noteDiv.value;
     setDbData([getFormElements(event.target), ...dbData]);
-    writeJournalEntry(getFormElements(event.target))
+    await handleUpload(audioBlob);
+    writeJournalEntry(getFormElements(event.target));
+    
 
     // Reset form
     event.target.reset();
+    setAudioURL('')
   };
 
   const getMaxDate = () => {
@@ -150,7 +154,7 @@ function EntryForm() {
             name="activities"
             id="meditation"
             className="activities-checkbox"
-            value="reading"
+            value="meditation"
           />
           <label htmlFor="meditation">Meditation</label>
           <br />
@@ -172,7 +176,7 @@ function EntryForm() {
           placeholder="enter note here"
           maxLength={200}
         ></textarea>
-
+        <AudioRecorder />
         <input
           type="submit"
           value="Submit"

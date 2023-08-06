@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Entries from "./pages/Entries";
 import Stats from "./pages/Stats";
 import EntryForm from "./pages/EntryForm";
@@ -27,6 +27,7 @@ function App() {
         <Route exact path="/entryForm" element={<EntryForm />} />
         <Route path="/entryForm/:datetime" element={<EntryForm />} />
         <Route path="/test" element={<Test />} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </div>
   );

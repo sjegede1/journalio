@@ -2,16 +2,27 @@ import { createContext, useState } from "react";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, push, ref, set } from "firebase/database";
+import {
+  getStorage,
+  uploadBytes,
+  uploadBytesResumable,
+  getDownloadURL,
+  ref as refStorage,
+  listAll,
+} from "firebase/storage";
+
 import { v4 as uuid } from "uuid";
 
 export const DBContext = createContext();
 
 const DBContextProvider = (props) => {
   const [dbData, setDbData] = useState([]);
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
   const [username, setUsername] = useState("sola-j");
   const [moods, setMoods] = useState([]);
-  const [activities,setActivities] = useState({})
+  const [activities, setActivities] = useState({});
+  const [audioURL, setAudioURL] = useState(null);
+  const [audioBlob, setAudioBlob] = useState(null);
 
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -46,8 +57,73 @@ const DBContextProvider = (props) => {
       note,
       username,
       activities,
+      audio: audioURL,
     });
     readEntriesFromDB();
+  };
+
+  // Get Firebase URL for audio files
+  // const getAudioURL = (url) => {
+  //   setAudioURL()
+  // }
+
+  // Upload Audio Files
+  const handleUpload = (file) => {
+    const metadata = {
+      contentType: "audio/wav",
+    };
+    const storage = getStorage(app);
+    const storageRef = refStorage(
+      storage,
+      `voice-notes/${username}/${uuid()}.wav`
+    );
+    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+        }
+      },
+      (error) => {
+        // A full list of error codes is available at
+        // https://firebase.google.com/docs/storage/web/handle-errors
+        switch (error.code) {
+          case "storage/unauthorized":
+            // User doesn't have permission to access the object
+            break;
+          case "storage/canceled":
+            // User canceled the upload
+            break;
+
+          // ...
+
+          case "storage/unknown":
+            // Unknown error occurred, inspect error.serverResponse
+            break;
+        }
+      },
+      async () => {
+        // Upload completed successfully, now we can get the download URL
+        await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          setAudioURL(downloadURL);
+          console.log("File available at", downloadURL);
+        });
+        // HOw to get list of all Audios.
+        // listAll(refStorage(storage, `voice-notes/${username}`)).then(s => s.items.forEach(i => getDownloadURL(i).then(s => console.log(s))))
+      }
+    );
   };
 
   const readEntriesFromDB = () => {
@@ -55,15 +131,16 @@ const DBContextProvider = (props) => {
     onValue(dbRef, (s) => {
       let entriesObj = s.val();
       setDbData(Object.values(entriesObj));
-      console.log(dbData);
+      // console.log(dbData);
     });
   };
 
   const readUsersFromDB = () => {
     const dbRef = ref(database, "/users");
     onValue(dbRef, (s) => {
-      setUsers(s.val());
-      console.log(users);
+      let newUsers = Object.values(s.val())
+      setUsers(newUsers);
+      console.log(newUsers)
     });
   };
 
@@ -71,7 +148,7 @@ const DBContextProvider = (props) => {
     const dbRef = ref(database, "/moods");
     onValue(dbRef, (s) => {
       setMoods(s.val());
-      console.log(s.val());
+      // console.log(s.val());
     });
   };
 
@@ -79,7 +156,7 @@ const DBContextProvider = (props) => {
     const dbRef = ref(database, "/activities");
     onValue(dbRef, (s) => {
       setActivities(s.val());
-      console.log(s.val());
+      // console.log(s.val());
     });
   };
 
@@ -96,7 +173,16 @@ const DBContextProvider = (props) => {
         moods,
         setMoods,
         readMoodsFromDB,
-        activities,setActivities,readActivitiesFromDB,
+        activities,
+        setActivities,
+        readActivitiesFromDB,
+        handleUpload,
+        audioURL,
+        setAudioURL,
+        audioBlob,
+        setAudioBlob,
+        users,
+        setUsers,
       }}
     >
       {props.children}

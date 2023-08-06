@@ -1,50 +1,40 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Chart } from "react-google-charts";
 import { DBContext } from "../contexts/db_context";
-import Chart from "react-google-charts";
+
+const data = [
+  ["day", "a", "b", "c", "d"],
+  ["Mon", 20, 28, 38, 45],
+  ["Tue", 31, 38, 55, 66],
+  ["Wed", 50, 55, 77, 80],
+  ["Thu", 50, 77, 66, 77],
+  ["Fri", 15, 66, 22, 68],
+];
+
+const options = {
+  legend: "none",
+};
+
 function TestChart() {
-  const { dbData } = useContext(DBContext);
-  const [donutData, setDonutData] = useState([]);
-  const options = {
-    pieHole: 0.25,
-    is3D: false,
-    backgroundColor: "none",
-    chartArea: { height: "100%", width: "100%" },
-    height: 300,
-    width: 300,
-    legend: "none",
-    pieSliceText: "label",
-    pieSliceTextStyle: { fontSize: 30 },
-    titleTextStyle: { fontSize: 15 },
-    enableInteractivity: true,
-  };
-  const chartType = "PieChart";
-  const columns = ["Mood", "Count"];
-  const getDonutData = () => {
-    let moodCount = [0, 0, 0, 0, 0];
-    let moodEmojis = ["😀", "🙂", "😐", "😟", "😩"];
-    let moodData;
-    dbData.forEach((entry) => {
-      moodCount[entry.mood]++;
-    });
-    moodData = moodEmojis.map((e, i) => {
-      return [e, moodCount[i]];
-    });
-    moodData.unshift(columns);
-    setDonutData(moodData);
-  };
-  useEffect(() => {
-    getDonutData();
-  }, [dbData]);
+  const { dbData, readEntriesFromDB } = useContext(DBContext); //TODO: Use userData
+  const userData = dbData;
+
+  let dates = userData.map(e => new Date(e.datetime).getDay())
+  console.log(dates)
+
+  // useEffect(() => {
+  //   readEntriesFromDB()
+  // },[])
+
   return (
-    <div className="chart">
-        <h3>Mood Count</h3>
-      <Chart
-        id="donut-chart"
-        chartType={chartType}
-        data={donutData}
-        options={options}
-      />
-    </div>
+    <Chart
+      chartType="CandlestickChart"
+      width="100%"
+      height="400px"
+      data={data}
+      options={options}
+    />
   );
 }
+
 export default TestChart;

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DBContext } from "../contexts/db_context";
 
-function Entry({ data, moods, activities }) {
+function Entry({ data, }) {
+  const {moods, activities} = useContext(DBContext)
   return (
     <div className="entry-card">
-      <p className="datetime-stamp">{data.datetime}</p>
+      <p className="datetime-stamp">{new Date(data.datetime).toLocaleString()}</p>
       <div className="entry-info">
         <div className="emoji-card">
           <h1 className="mood-card">{moods[data.mood]}</h1>
@@ -18,7 +20,9 @@ function Entry({ data, moods, activities }) {
             {data.note}
           </p>
           <div className="entry-media-card">
-            <div className="audio-player"><audio controls src={data.audio ? data.audio : 'https://demo.twilio.com/docs/classic.mp3'}></audio></div>
+            <div className="audio-player">
+              {data.audio ? <audio controls src={data.audio}></audio> : ""}
+              </div>
           </div>
         </div>
       </div>

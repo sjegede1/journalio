@@ -14,7 +14,7 @@ function Nav() {
 
         <AddEntryNav />
 
-        <Link to="/calendar">
+        <Link to="/notifications">
             <img src="https://www.iconexperience.com/_img/g_collection_png/blue/128x128/calendar_3.png" alt="" className="nav-icon" id="nav-calendar" />
         </Link>
 
