@@ -4,6 +4,7 @@ import { DBContext } from "../contexts/db_context";
 import { v4 as uuid } from "uuid";
 import AudioRecorder from "../components/AudioRecorder";
 import { redirect, useNavigate } from "react-router-dom";
+import ActivitiesBarChart from "../components/ActivitiesBarChart";
 
 function Test() {
   const { readEntriesFromDB, writeJournalEntry } = useContext(DBContext);
@@ -18,6 +19,7 @@ function Test() {
 
       <button onClick={() => {window.location.assign('/notifications')}}>REDIRECT TO MAIN PAGE</button>
 
+      <ActivitiesBarChart />
       <TestChart />
       <AudioRecorder />
     </div>

@@ -34,7 +34,7 @@ function ActivitiesBarChart() {
     activitiesCategories.forEach((a, i) => {
       activitiesData.push([a, activitiesCount[i]]);
     });
-    console.log(activitiesData);
+    // console.log(activitiesData);
     return { activitiesCategories, activitiesCount };
   };
 
