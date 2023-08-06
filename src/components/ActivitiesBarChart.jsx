@@ -1,94 +1,61 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Chart } from "chart.js";
-import "chart.js/auto";
+import React, { useContext, useEffect, useState } from "react";
 import { DBContext } from "../contexts/db_context";
+import Chart from "react-google-charts";
 
-function ActivitiesBarChart() {
-  const { dbData } = useContext(DBContext);
-  const testChart = useRef();
+function ActivitiesBarChart({ userData }) {
+  const { moods, dbData, activities } = useContext(DBContext);
+  const [barData, setBarData] = useState([]);
 
-  const getBarData = () => {
-    let activitiesRawArray = [];
-    dbData.forEach((e) => {
-      if (e.activities) {
-        activitiesRawArray.push(...e.activities);
-      }
-    });
-    let activitiesUnique = new Set(activitiesRawArray);
-    let activitiesCategories = Array.from(activitiesUnique);
-    let activitiesCount = [];
-    activitiesCount.length = activitiesCategories.length;
-
-    activitiesRawArray.forEach((a, i) => {
-      let activityIndex = activitiesCategories.indexOf(a);
-      if (activitiesCount[activityIndex] == 0) {
-        activitiesCount[activityIndex]++;
-      } else if (!activitiesCount[activityIndex]) {
-        activitiesCount[activityIndex] = 0;
-      } else {
-        activitiesCount[activityIndex]++;
-      }
-    });
-
-    let activitiesData = [];
-    activitiesCategories.forEach((a, i) => {
-      activitiesData.push([a, activitiesCount[i]]);
-    });
-    // console.log(activitiesData);
-    return { activitiesCategories, activitiesCount };
-  };
-
-  const { activitiesCategories: labels, activitiesCount } = getBarData();
-
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: "My First Dataset",
-        data: activitiesCount,
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
-          "rgba(255, 205, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(201, 203, 207, 0.2)",
-        ],
-        borderColor: [
-          "rgb(255, 99, 132)",
-          "rgb(255, 159, 64)",
-          "rgb(255, 205, 86)",
-          "rgb(75, 192, 192)",
-          "rgb(54, 162, 235)",
-          "rgb(153, 102, 255)",
-          "rgb(201, 203, 207)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const config = {
-    type: "bar",
-    data: data,
-    options: {
-      indexAxis: 'y',
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
+  const options = {
+    pieHole: 0.25,
+    is3D: false,
+    backgroundColor: "none",
+    chartArea: { height: "100%", width: "100%" },
+    height: 300,
+    width: 300,
+    legend: "none",
+    pieSliceText: "label",
+    pieSliceTextStyle: { fontSize: 30 },
+    titleTextStyle: { fontSize: 15 },
+    enableInteractivity: true,
+    animation: {
+      startup: true,
+      easing: "out",
+      duration: 500,
     },
   };
 
+  const chartType = "BarChart";
+  const columns = ["Activities", "Count"];
+  const getBarData = () => {
+    let moodCount = [0, 0, 0, 0, 0];
+    let moodEmojis = moods;
+    let moodData;
+    userData.forEach((entry) => {
+      //userData switch
+      moodCount[entry.mood]++;
+    });
+    moodData = moodEmojis.map((e, i) => {
+      return [e, moodCount[i]];
+    });
+    moodData.unshift(columns);
+    setBarData(moodData);
+  };
+
   useEffect(() => {
-    new Chart(testChart.current, config);
-  }, []);
+    getBarData();
+  }, [dbData]);
+
 
   return (
-    <div>
-      <canvas id="test-chart" ref={testChart} className="chart"></canvas>
+    <div className="chart">
+      <h3>Mood Count</h3>
+      <Chart
+        id="donut-chart"
+        chartType={chartType}
+        data={barData}
+        options={options}
+      />
     </div>
   );
 }

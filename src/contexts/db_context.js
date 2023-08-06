@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, push, ref, set } from "firebase/database";
@@ -138,9 +138,8 @@ const DBContextProvider = (props) => {
   const readUsersFromDB = () => {
     const dbRef = ref(database, "/users");
     onValue(dbRef, (s) => {
-      let newUsers = Object.values(s.val())
+      let newUsers = Object.values(s.val());
       setUsers(newUsers);
-      console.log(newUsers)
     });
   };
 
@@ -159,6 +158,14 @@ const DBContextProvider = (props) => {
       // console.log(s.val());
     });
   };
+
+  useEffect(() => {
+    readUsersFromDB();
+    readEntriesFromDB();
+    readMoodsFromDB();
+    readActivitiesFromDB();
+  },[])
+
 
   return (
     <DBContext.Provider

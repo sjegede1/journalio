@@ -11,7 +11,7 @@ const AudioRecorder = () => {
   const {handleUpload, audioBlob, setAudioBlob, setAudioURL, audioURL} = useContext(DBContext)
 
   // JERRY_RIGGED TO set Audio URL
-  useEffect(() => setAudioURL(audioURL), [isRecording])
+  // useEffect(() => setAudioURL(audioURL), [isRecording])
 
   const startRecording = () => {
     navigator.mediaDevices.getUserMedia({ audio: true })

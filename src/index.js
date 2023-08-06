@@ -9,7 +9,7 @@ import DBContextProvider from "./contexts/db_context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Router>
       <AppContextProvider>
         <DBContextProvider>
@@ -17,7 +17,7 @@ root.render(
         </DBContextProvider>
       </AppContextProvider>
     </Router>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

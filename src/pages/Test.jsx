@@ -18,8 +18,6 @@ function Test() {
       <br />
 
       <button onClick={() => {window.location.assign('/notifications')}}>REDIRECT TO MAIN PAGE</button>
-
-      <ActivitiesBarChart />
       <TestChart />
       <AudioRecorder />
     </div>
