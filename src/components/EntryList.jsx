@@ -6,7 +6,7 @@ import EntryForm from "../pages/EntryForm";
 import { Link } from "react-router-dom";
 
 function EntryList() {
-  let { dbData, readEntriesFromDB, username } = useContext(DBContext);
+  let { dbData, username } = useContext(DBContext);
 
   return (
     <div className="entry-list main">
