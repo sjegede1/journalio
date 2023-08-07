@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../contexts/app_context";
 import { DBContext } from "../contexts/db_context";
 import '../assets/styles/login.css'
+import logo from '../assets/logos/journalio-logo.png'
 
 function Login() {
   const { isLoggedIn, setIsLoggedIn , } = useContext(AppContext);
@@ -37,7 +38,7 @@ function Login() {
 
   return (
     <div className="signup-page">
-      <h1>Welcome to Journalio</h1>
+      <h1>Welcome to <img src={logo} alt="" /></h1>
       <h3>Please login below</h3>
       <form action="" className="login" onSubmit={handleSubmit}>
         <div className="email">

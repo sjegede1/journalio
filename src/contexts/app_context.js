@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const formatDateTime = (currentDate) => {
     let yyyy = currentDate.getFullYear();

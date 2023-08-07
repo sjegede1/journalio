@@ -1,6 +1,6 @@
 header {
     display: flex;
-    border: solid black;
+    border-bottom: solid #03045e;
     align-items: center;
     justify-content: space-around;
     padding: 0.25em;
@@ -8,7 +8,7 @@ header {
     width: 100%;
     background-color: aliceblue;
     z-index: 1;
-    background-color: #b08968;
+    background-color: white;
 }
 
 .header-title {

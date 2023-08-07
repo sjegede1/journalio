@@ -138,7 +138,7 @@ function EntryForm() {
             className="activities-checkbox"
             value="reading"
           />
-          <label htmlFor="reading">Reading</label>
+          <label htmlFor="reading" className="activities-label">Reading</label>
           <br />
           <input
             type="checkbox"
@@ -147,7 +147,7 @@ function EntryForm() {
             className="activities-checkbox"
             value="workout"
           />
-          <label htmlFor="workout">Workout</label>
+          <label htmlFor="workout" className="activities-label">Workout</label>
           <br />
           <input
             type="checkbox"
@@ -156,7 +156,7 @@ function EntryForm() {
             className="activities-checkbox"
             value="meditation"
           />
-          <label htmlFor="meditation">Meditation</label>
+          <label htmlFor="meditation" className="activities-label">Meditation</label>
           <br />
           <input
             type="checkbox"
@@ -165,7 +165,7 @@ function EntryForm() {
             className="activities-checkbox"
             value="party"
           />
-          <label htmlFor="party">Party</label>
+          <label htmlFor="party" className="activities-label">Party</label>
           <br />
         </div>
         <textarea
@@ -177,13 +177,13 @@ function EntryForm() {
           maxLength={200}
         ></textarea>
         <AudioRecorder />
-        <input
+        <button
           type="submit"
           value="Submit"
           onChange={(e) => {
             setQuery(e.target.value);
           }}
-        />
+        >Submit</button>
       </form>
     </div>
   );

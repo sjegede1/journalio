@@ -1,9 +1,10 @@
 .signup-page {
-    border: solid red;
+    /* border: solid red; */
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #0077b6;
 }
 
 form.login {

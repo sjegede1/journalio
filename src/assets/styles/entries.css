@@ -1,5 +1,5 @@
 .entry-card {
-  border: solid blue;
+  border: solid #03045e;
   margin: 1em;
   display: flex;
   flex-direction: column;
@@ -7,12 +7,12 @@
   width: 400px;
 }
 
-.entries-list .entry-card {
+.entry-list .entry-card {
   min-width: 400px;
 }
 
 .datetime-stamp {
-  border: solid green;
+  /* border: solid green; */
   margin: 0;
   text-align: right;
   font-size: small;
@@ -21,17 +21,19 @@
   z-index: -1;
   color: white;
   font-weight: bold;
+  border-radius:20px 20px 0 0;
 }
 
 .entry-info {
   display: flex;
-  border: solid red;
+  /* border: solid red; */
   justify-content: space-around;
   background-color: #caf0f8;
+  border-radius: 0 0 20px 20px;
 }
 
 .emoji-card {
-  border: solid yellow;
+  /* border: solid yellow; */
   padding: 0;
   display: flex;
   flex-flow: column wrap;
@@ -40,14 +42,14 @@
 
 .mood-card {
   font-size: 6em;
-  border: solid black;
+  /* border: solid black; */
   margin: 0;
 }
 
 .activities-card {
   font-size: 2em;
   margin: 0;
-  border: solid purple;
+  /* border: solid purple; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -58,7 +60,7 @@
 }
 
 .note-media-card {
-  border: solid yellow;
+  /* border: solid yellow; */
   max-width: 50%;
   display: flex;
   flex-flow: column;
@@ -66,17 +68,17 @@
 }
 
 .note-card {
-  border: solid blue;
+  /* border: solid blue; */
   font-size: 1.2em;
   margin: 0;
   padding: 0;
   height: fit-content;
-  color: #7f5539;
+  color: black;
   font-weight: bold;
 }
 
 .entry-media-card {
-  border: solid red;
+  /* border: solid red; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -85,7 +87,7 @@
 }
 
 .audio-player {
-  border: solid fuchsia;
+  /* border: solid fuchsia; */
   max-width: 100%;
   padding-inline: 0.25em;
   display: flex;

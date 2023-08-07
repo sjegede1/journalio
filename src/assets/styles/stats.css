@@ -1,11 +1,11 @@
 .stats-list {
-  border: solid red;
+  /* border: solid rgb(122, 117, 117); */
   align-items: center;
   height: 600px;
 }
 
 .chart {
-  border: solid green;
+  /* border: solid green; */
   margin-block: 2em;
   width: fit-content;
   height: fit-content;

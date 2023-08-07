@@ -1,7 +1,14 @@
 .entry-form-page {
-    border: solid grey;
+    border: solid thin grey;
     border-radius: 4em 4em 0 0;
-    padding: 1em;
+    /* padding: 1em; */
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #03045e;
+    padding: 0 0 3em 0;
 }
 
 .entry-form-header {
@@ -9,11 +16,13 @@
 }
 
 .entry-form {
-    border: solid blue;
-    margin: 1em;
+    border: solid thin blue;
+    /* margin: 1em; */
     padding: 1em;
     display: flex;
     flex-direction: column;
+    max-width: 350px;
+    background-color: aliceblue;
 }
 
 .entry-form input {
@@ -24,3 +33,10 @@
     font-size: 3em;
 }
 
+.activities-label {
+    font-size: 2em
+}
+
+.entry-form-header {
+    margin: 1em auto 1em 3em;
+}

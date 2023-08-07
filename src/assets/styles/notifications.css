@@ -1,27 +1,31 @@
 .notifications-list {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .friend-card {
-    border: solid red;
+    /* border: solid red; */
     margin: 2em;
     justify-content: center;
     align-items: center;
     min-width: 400px;
+    background-color: #023e8a;
+    border-radius: 20px;
+    height: fit-content;
 }
 
 .friend-summary {
     display: flex;
     width: 100%;
-    border: solid yellow;
+    /* border: solid yellow; */
     justify-content: space-around;
     align-items: center;
+    color: white;
 }
 
 .friend-entries {
-    border: solid green;
+    /* border: solid green; */
     height: 400px;
     overflow-y: scroll;
     overflow-x: none;
@@ -29,6 +33,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #14213d;
+    margin: 2em 0;
 }
 
 .friend-entries .entry-card {

@@ -16,7 +16,7 @@ nav {
 }
 
 .nav-add-entry-container {
-  border: solid red;
+  /* border: solid red; */
   display: flex;
   margin-top: -2em;
   justify-content: center;
@@ -32,7 +32,7 @@ nav {
 }
 
 .nav-add-entry {
-  border: solid green;
+  /* border: solid green; */
   /* border-radius: 50%; */
   position: fixed;
 }
