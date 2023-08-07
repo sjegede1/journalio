@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/emotional-journal/static/css/main.7cf798f0.css",
+    "main.js": "/emotional-journal/static/js/main.da38b489.js",
+    "static/js/787.915574d1.chunk.js": "/emotional-journal/static/js/787.915574d1.chunk.js",
+    "index.html": "/emotional-journal/index.html",
+    "main.7cf798f0.css.map": "/emotional-journal/static/css/main.7cf798f0.css.map",
+    "main.da38b489.js.map": "/emotional-journal/static/js/main.da38b489.js.map",
+    "787.915574d1.chunk.js.map": "/emotional-journal/static/js/787.915574d1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7cf798f0.css",
+    "static/js/main.da38b489.js"
+  ]
+}
