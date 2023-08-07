@@ -5,11 +5,15 @@
 This is a daily journal app designed to help you track your daily moods and the activities that may have contributed to these moods.
 This app is HEAVILY INSPIRED by The Daylio App
 
-## Outline of Work to be done
-#### CURRENT TODO:
-- Create the entry form
-- Create Entries List in chronological order
-- 
+## Technologies and Dependencies
+- Firebase 
+- Google Charts
+- React
+
+## APIs
+- Firebase storage
+- Firebase Realtime Database
+
 ### MVP
 - ✅ Create a header with the name of the month, left and right arrows, and a search icon.
 - ✅ Create a nav bar at the bottom with 4 pages and a 5th icon in the middle to add a new entry.
