@@ -21,7 +21,7 @@ This app is HEAVILY INSPIRED by The Daylio App
 - Other Pages
     - Entry Form: This is the page where we enter and submit new journal entries.
         - <strong>FEATURES:</strong>
-            - Animate card by sliding up from the bottom.
+            - Animate the card by sliding up from the bottom.
             - Use params to set state when the page loads.
             - 
         - DateTime: input type:datetime-local value:current-time max:EOD today required

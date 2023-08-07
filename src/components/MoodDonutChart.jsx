@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { DBContext } from "../contexts/db_context";
 import Chart from "react-google-charts";
 
-function MoodDonutChart({ userData }) {
+function MoodDonutChart({ userData, width, height }) {
   const { moods, readEntriesFromDB, username, dbData } = useContext(DBContext);
   const [donutData, setDonutData] = useState([]);
 
@@ -11,8 +11,8 @@ function MoodDonutChart({ userData }) {
     is3D: false,
     backgroundColor: "none",
     chartArea: { height: "100%", width: "100%" },
-    height: 300,
-    width: 300,
+    height: width || 300,
+    width: height || 300,
     legend: "none",
     pieSliceText: "label",
     pieSliceTextStyle: { fontSize: 30 },
@@ -46,7 +46,6 @@ function MoodDonutChart({ userData }) {
   }, [dbData]);
   return (
     <div className="chart">
-      <h3>Mood Count</h3>
       <Chart
         id="donut-chart"
         chartType={chartType}

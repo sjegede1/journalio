@@ -5,7 +5,7 @@ import Header from '../components/Header'
 
 function Entries() {
   return (
-    <div className="entry-page page">
+    <div className="entries-page page">
         <Header />
         <EntryList />
         <Nav />

@@ -7,49 +7,49 @@ function ActivitiesBarChart({ userData }) {
   const [barData, setBarData] = useState([]);
 
   const options = {
-    pieHole: 0.25,
-    is3D: false,
-    backgroundColor: "none",
-    chartArea: { height: "100%", width: "100%" },
-    height: 300,
     width: 300,
-    legend: "none",
-    pieSliceText: "label",
-    pieSliceTextStyle: { fontSize: 30 },
-    titleTextStyle: { fontSize: 15 },
-    enableInteractivity: true,
-    animation: {
-      startup: true,
-      easing: "out",
-      duration: 500,
+    height: 300,
+    bar: { groupWidth: "95%" },
+    legend: { position: "none" },
+    animation: { startup: true, duration: 1000, easing: "out" },
+    orientation: "horizontal",
+    hAxis: {
+      textStyle: { fontSize: 30 },
+      textPosition: "in",
+      viewWindowMode: "maximized",
+      gridlines: { color: "none" }
     },
+    vAxis: { viewWindowMode: "pretty", gridlines: { color: "none" } },
+    chartArea: { height: "100%", width: "100%" },
+    backgroundColor: "none",
   };
 
   const chartType = "BarChart";
   const columns = ["Activities", "Count"];
   const getBarData = () => {
-    let moodCount = [0, 0, 0, 0, 0];
-    let moodEmojis = moods;
-    let moodData;
+    let activitiesCount = [0, 0, 0, 0];
+    let activitiesNames = Object.keys(activities);
+    let activitiesEmojis = activitiesNames.map((a) => activities[a]);
+    let activitiesData;
     userData.forEach((entry) => {
-      //userData switch
-      moodCount[entry.mood]++;
+      entry.activities.forEach(
+        (a) => activitiesCount[activitiesNames.indexOf(a)]++
+      );
     });
-    moodData = moodEmojis.map((e, i) => {
-      return [e, moodCount[i]];
+    activitiesData = activitiesEmojis.map((e, i) => {
+      return [e, activitiesCount[i]];
     });
-    moodData.unshift(columns);
-    setBarData(moodData);
+    activitiesData.unshift(columns);
+    setBarData(activitiesData);
+    console.log(activitiesData);
   };
 
   useEffect(() => {
     getBarData();
   }, [dbData]);
 
-
   return (
     <div className="chart">
-      <h3>Mood Count</h3>
       <Chart
         id="donut-chart"
         chartType={chartType}

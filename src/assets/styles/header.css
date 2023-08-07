@@ -8,6 +8,7 @@ header {
     width: 100%;
     background-color: aliceblue;
     z-index: 1;
+    background-color: #b08968;
 }
 
 .header-title {

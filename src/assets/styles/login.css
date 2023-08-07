@@ -1,0 +1,24 @@
+.signup-page {
+    border: solid red;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form.login {
+    margin: 2em;
+    padding: 1em;
+    font-size: 1.2em;
+}
+
+input.login {
+    margin: 1em 1em;
+    height: 2em;
+}
+
+button {
+    padding: 0.5em;
+    font-size: 1.2em;
+    border-radius: 5px;
+}

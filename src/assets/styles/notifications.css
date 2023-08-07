@@ -1,0 +1,50 @@
+.notifications-list {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.friend-card {
+    border: solid red;
+    margin: 2em;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+}
+
+.friend-summary {
+    display: flex;
+    width: 100%;
+    border: solid yellow;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.friend-entries {
+    border: solid green;
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: none;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friend-entries .entry-card {
+    max-width: 300px
+}
+
+.hidden {
+    display: none;
+}
+
+.friends-show-more {
+    display: flex;
+    justify-content: right;
+}
+
+.friends-show-more button {
+    margin: 0.25em 1em;
+    font-size: 1.1em;
+}

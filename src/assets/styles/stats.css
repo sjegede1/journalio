@@ -1,15 +1,14 @@
+.stats-list {
+  border: solid red;
+  align-items: center;
+  height: 600px;
+}
+
 .chart {
   border: solid green;
   margin-block: 2em;
-  width: fit-content
-}
-
-
-.calendar-chart {
   width: fit-content;
-  display: flex;
-  align-items: center;
-  position: relative;
+  height: fit-content;
+  margin: 1em 2em
 }
 
- 

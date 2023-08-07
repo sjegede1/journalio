@@ -5,7 +5,7 @@ import NotificationsList from '../components/NotificationsList'
 
 function Notifications() {
   return (
-    <div className="calendar page">
+    <div className="notifications page">
         <Header />
         <NotificationsList />
         <Nav />
