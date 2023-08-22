@@ -31,10 +31,12 @@ function ActivitiesBarChart({ userData }) {
     let activitiesNames = Object.keys(activities);
     let activitiesEmojis = activitiesNames.map((a) => activities[a]);
     let activitiesData;
+    console.log(userData)
     userData.forEach((entry) => {
+      if (entry.activities) {
       entry.activities.forEach(
         (a) => activitiesCount[activitiesNames.indexOf(a)]++
-      );
+      )};
     });
     activitiesData = activitiesEmojis.map((e, i) => {
       return [e, activitiesCount[i]];

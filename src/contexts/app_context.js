@@ -3,7 +3,8 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // TODO: Set to true for testing.
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const formatDateTime = (currentDate) => {
     let yyyy = currentDate.getFullYear();
